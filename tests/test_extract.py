@@ -2,15 +2,28 @@ import sys
 import pytest
 import re
 import tempfile
-from io import BytesIO
+import os
 
-sys.path.insert(1, '../project0')
+
+#If you are running the program from the cs5293sp20-project0 folder we need:
+myPath = os.path.abspath("../cs5293sp20-project0/project0")
+sys.path.insert(1, myPath)
+
+#If you are running the program from the tests folder, we need:
+myPath = os.path.abspath("../project0")
+sys.path.insert(1, myPath)
 
 from project0 import project0
 
 def test_extraction():
     
-    with open("../docs/testIncident.pdf", mode = 'rb') as f:
+    currentDir = os.getcwd()
+    if(os.path.basename(currentDir) == "cs5293sp20-project0"):
+        docPath = os.path.abspath("docs/testIncident.pdf")
+    elif(os.path.basename(currentDir) == "tests"):
+        docPath = os.path.abspath("../docs/testIncident.pdf")
+
+    with open(docPath, mode = 'rb') as f:
         myDoc = f.read()
         
     PDF_list = []
@@ -22,6 +35,4 @@ def test_extraction():
     #Next, it has the right shape (no more than 5 items in a line)
     #We can achieve this with a regex search. If the search returns nothing, then we are good.
     sixColumns = re.compile(r".+,.+,.+,.+,.+,")
-    #fourColumns = re.compile(r".+,.+,.+,(.+)?[^,]\n)
-    assert sixColumns.match(extractResults == None)
-    #fourOrLessColumns = re.compile(r".+,\n)
+    assert sixColumns.match(extractResults) == None

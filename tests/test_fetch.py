@@ -1,16 +1,22 @@
 import sys
 import pytest
+import os
  
-sys.path.insert(1, '/home/ncejda/gitProjects/Police-Incident-Reports/project0')
+#If you are running the program from the cs5293sp20-project0 folder we need:
+myPath = os.path.abspath("../cs5293sp20-project0/project0")
+sys.path.insert(1, myPath)
+
+#If you are running the program from the tests folder, we need:
+myPath = os.path.abspath("../project0")
+sys.path.insert(1, myPath)
 
 
-
-from project0 import project0 as proj
+from project0 import project0
 
 
 def test_fetch_good_url():
     good_url = "http://normanpd.normanok.gov/content/daily-activity"
-    fetchResults = proj.fetchincidents(good_url) 
+    fetchResults = project0.fetchincidents(good_url) 
     assert type(fetchResults) == list
     assert len(fetchResults) == 1
 
@@ -18,7 +24,7 @@ def test_fetch_good_url():
 def test_fetch_bad_url():
     bad_url = "http://youtube.com"
     with pytest.raises(NameError):
-        proj.fetchincidents(bad_url)
+        project0.fetchincidents(bad_url)
 
 
 
