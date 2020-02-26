@@ -155,7 +155,7 @@ class project0:
         finally:
             if conn:
                 df = pandas.read_csv(incidents)
-                df.to_sql("incidents", conn, if_exists='append', index=False)
+                df.to_sql("incidents", conn, if_exists='replace', index=False)
                 conn.commit()
                 conn.close()
         
