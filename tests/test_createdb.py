@@ -24,12 +24,13 @@ def test_creatdb():
         dbPath = os.path.abspath("../cs5293sp20-project0/project0")
     elif(os.path.basename(currentDir) == "tests"):
         dbPath = os.path.abspath("../project0")
-        
+    
+    os.chdir(dbPath)
     #Then we create a normanpd database
     project0.createdb()
     
     #We re-open a connection to the sqlite3 database, and run a PRAGMA table_info() statement
-    conn = sqlite3.connect(dbPath)
+    conn = sqlite3.connect("normanpd.db")
     results = conn.execute("PRAGMA table_info(incidents);")
     output = results.fetchall()
     
