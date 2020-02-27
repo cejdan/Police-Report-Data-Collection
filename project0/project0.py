@@ -128,7 +128,7 @@ class project0:
     def createdb():
         #Code modified from https://www.sqlitetutorial.net/sqlite-python/creating-database/
         conn = None
-        
+          
         try:
             conn = sqlite3.connect("normanpd.db")
             #print("Connection opened. Sqlite3 version:",sqlite3.version)
