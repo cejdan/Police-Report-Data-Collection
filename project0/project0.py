@@ -141,7 +141,7 @@ class project0:
                                                 'Nature' TEXT, 
                                                 'Incident Ori' TEXT)""")
             except:
-                print("Lol")
+                pass
         except Error:
             print(Error)
         finally:
@@ -176,12 +176,13 @@ class project0:
 
                 for row in rows:
                     print(row[0],row[1],sep="|")
+                    
+                return rows
                 
         
 
 
 
-#project0.createdb()
 
 # =============================================================================
 # currentDir = os.getcwd()
