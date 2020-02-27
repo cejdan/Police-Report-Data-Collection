@@ -34,11 +34,11 @@ def test_creatdb():
     output = results.fetchall()
     
     #Now we can check if the column names match the expected output.
-    assert output[0][1] == 'Date / Time'
-    assert output[1][1] == 'Incident Number'
+    assert output[0][1] == 'Date/Time'
+    assert output[1][1] == 'Incident_Number'
     assert output[2][1] == 'Location'
     assert output[3][1] == 'Nature'
-    assert output[4][1] == 'Incident Ori'
+    assert output[4][1] == 'Incident_ORI'
     
     #Finally we close the connection to the database
     conn.close()

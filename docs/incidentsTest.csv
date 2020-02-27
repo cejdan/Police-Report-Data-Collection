@@ -1,4 +1,4 @@
-Date / Time,Incident Number,Location,Nature,Incident ORI
+Date/Time,Incident_Number,Location,Nature,Incident_Ori
 2/24/2020 0:04,2020-00003064,1932 E LINDSEY ST,Breathing Problems,EMSSTAT
 2/24/2020 0:04,2020-00002270,1932 E LINDSEY ST,Breathing Problems,14005
 2/24/2020 0:08,2020-00014232,2146 W BROOKS ST,Open Door/Premises Check,OK0140200
@@ -352,4 +352,3 @@ Date / Time,Incident Number,Location,Nature,Incident ORI
 2/24/2020 23:44,2020-00003125,333 INTERSTATE DR E,Convulsion/Seizure,EMSSTAT
 2/24/2020 23:44,2020-00002310,333 INTERSTATE DR E,Convulsion/Seizure,14005
 2/24/2020 23:46,2020-00014488,W LINDSEY ST / MCGEE DR,Traffic Stop,OK0140200
-

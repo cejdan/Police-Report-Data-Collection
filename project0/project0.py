@@ -97,8 +97,8 @@ class project0:
             if(page == 0): #Cleans up page 0
                 extraCommas = re.compile(r",")
                 subbed_page = extraCommas.sub(r";", pageStr)
-                column_headers = re.compile(r"(Date / Time)\n(Incident Number)\n(Location)\n(Nature)\n(Incident ORI)\n")
-                subbed_page = column_headers.sub(r"\1,\2,\3,\4,\5\n", subbed_page)
+                column_headers = re.compile(r"(Date) / (Time)\n(Incident) (Number)\n(Location)\n(Nature)\n(Incident) (ORI)\n")
+                subbed_page = column_headers.sub(r"\1/\2,\3_\4,\5,\6,\7_\8\n", subbed_page)
                 extraText1 = re.compile(r"NORMAN POLICE DEPARTMENT\n")
                 extraText2 = re.compile(r"Daily Incident Summary \(Public\)")
                 subbed_page = extraText1.sub(r"", subbed_page)
@@ -135,11 +135,11 @@ class project0:
             
             try:
                 c = conn.cursor()
-                c.execute("""CREATE TABLE incidents('Date / Time' TEXT, 
-                                                'Incident Number' TEXT, 
+                c.execute("""CREATE TABLE incidents('Date/Time' TEXT, 
+                                                'Incident_Number' TEXT, 
                                                 'Location' TEXT, 
                                                 'Nature' TEXT, 
-                                                'Incident Ori' TEXT)""")
+                                                'Incident_ORI' TEXT)""")
             except:
                 pass
         except Error:
@@ -180,9 +180,7 @@ class project0:
                 return rows
                 
         
-
-
-
+        
 
 # =============================================================================
 # currentDir = os.getcwd()
