@@ -29,7 +29,8 @@ def test_creatdb():
     
     #We re-open a connection to the sqlite3 database, and run a PRAGMA table_info() statement
     conn = sqlite3.connect(dbPath)
-    output = conn.execute("PRAGMA table_info(incidents);").fetchall()
+    results = conn.execute("PRAGMA table_info(incidents);")
+    output = results.fetchall()
     
     #Now we can check if the column names match the expected output.
     assert output[0][1] == 'Date / Time'

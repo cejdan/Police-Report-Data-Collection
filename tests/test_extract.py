@@ -34,8 +34,8 @@ def test_extraction():
     assert type(extractResults) == str
     #Next, it has the right shape (no more than 5 items in a line)
     #We can achieve this with a regex search. If the search returns nothing, then we are good.
-    tooFewColumns = re.compile(r"^([^,]*,){0,3}[^,]*$", flags=re.MULTILINE) #Matches any row with exactly 0, 1, 2, or 3 commas. This is too few!
-    tooManyColumns = re.compile(r"^([^,]*,){5,10}[^,]*$", flags=re.MULTILINE) #Matches any row with exactly 5,6,7,8,9, or 10 commas. Too many! We should have exactly 4 in each line.
+    tooFewColumns = re.compile(r"^([^,]*,){0,3}[^,]*\n", flags=re.MULTILINE) #Matches any row with exactly 0, 1, 2, or 3 commas. This is too few!
+    tooManyColumns = re.compile(r"^([^,]*,){5,10}[^,]*\n", flags=re.MULTILINE) #Matches any row with exactly 5,6,7,8,9, or 10 commas. Too many! We should have exactly 4 in each line.
     assert tooFewColumns.match(extractResults) == None
     assert tooManyColumns.match(extractResults) == None
     
