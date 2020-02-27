@@ -19,11 +19,12 @@ def test_creatdb():
     
     #First we establish a path to our normanpd.db file (created in the project0 folder)
     currentDir = os.getcwd()
-    if(os.path.basename(currentDir) == "cs5293sp20-project0"):
-        dbPath = os.path.abspath("../cs5293sp20-project0/project0/normanpd.db")
-    elif(os.path.basename(currentDir) == "tests"):
-        dbPath = os.path.abspath("../project0/normanpd.db")
     
+    if(os.path.basename(currentDir) == "cs5293sp20-project0"):
+        dbPath = os.path.abspath("../cs5293sp20-project0/project0")
+    elif(os.path.basename(currentDir) == "tests"):
+        dbPath = os.path.abspath("../project0")
+        
     #Then we create a normanpd database
     project0.createdb()
     
@@ -41,8 +42,6 @@ def test_creatdb():
     
     #Finally we close the connection to the database
     conn.close()
-
-
 
 
 

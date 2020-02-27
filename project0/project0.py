@@ -6,6 +6,7 @@ import re
 import sqlite3
 from sqlite3 import Error
 import pandas
+import os
 
 
 class project0:
@@ -127,24 +128,26 @@ class project0:
     def createdb():
         #Code modified from https://www.sqlitetutorial.net/sqlite-python/creating-database/
         conn = None
+        
         try:
             conn = sqlite3.connect("normanpd.db")
             #print("Connection opened. Sqlite3 version:",sqlite3.version)
             
             try:
                 c = conn.cursor()
-                c.execute("""CREATE TABLE incidents(Date / Time TEXT, 
-                                                Incident Number TEXT, 
-                                                Location TEXT, 
-                                                Nature TEXT, 
-                                                Incident Ori TEXT)""")
+                c.execute("""CREATE TABLE incidents('Date / Time' TEXT, 
+                                                'Incident Number' TEXT, 
+                                                'Location' TEXT, 
+                                                'Nature' TEXT, 
+                                                'Incident Ori' TEXT)""")
             except:
-                pass
+                print("Lol")
         except Error:
             print(Error)
         finally:
             if conn:
                 #print("Connection closed")
+                conn.commit()
                 conn.close()
     
     def populatedb(db, incidents):
@@ -175,25 +178,44 @@ class project0:
                     print(row[0],row[1],sep="|")
                 
         
-    
 
+
+
+#project0.createdb()
 
 # =============================================================================
-# This is the main method basically. I moved it to main.py
-# myProject = project0()
-# myPDF = myProject.fetchincidents("http://normanpd.normanok.gov/content/daily-activity")
-# myCSV = myProject.extractincidents(myPDF)
+# currentDir = os.getcwd()
+# dbPath = ""
+# 
+# if(os.path.basename(currentDir) == "cs5293sp20-project0"):
+#     dbPath = os.path.abspath("../cs5293sp20-project0/project0/normanpd.db")
+# elif(os.path.basename(currentDir) == "tests"):
+#     dbPath = os.path.abspath("../project0/normanpd.db")
+# myProj = project0()
+# project0.createdb()
+# conn = sqlite3.connect(dbPath)
+# results = conn.execute("PRAGMA table_info(incidents);")
+# output = results.fetchall()
+# print(output)
+# print(output[0][1])
+# =============================================================================
+
+# #=============================================================================
+# #This is the main method basically. I moved it to main.py
+#myProject = project0()
+#myPDF = myProject.fetchincidents("http://normanpd.normanok.gov/content/daily-activity")
+#myCSV = myProject.extractincidents(myPDF)
 # 
 # #Write the csv to a .csv file.
-# f = open("incidents.csv", "w")
-# f.write(myCSV)
-# f.close()
+#f = open("incidents.csv", "w")
+#f.write(myCSV)
+#f.close()
 # #Now I am ready to use this file as the parameter for populatedb
 # 
-# myProject.createdb()
-# myProject.populatedb("normanpd.db", "incidents.csv")
-# myProject.status("normanpd.db")
-# =============================================================================
+#myProject.createdb()
+#myProject.populatedb("normanpd.db", "incidents.csv")
+#myProject.status("normanpd.db")
+# #=============================================================================
 
 
 
