@@ -21,16 +21,15 @@ def test_creatdb():
     currentDir = os.getcwd()
     
     if(os.path.basename(currentDir) == "cs5293sp20-project0"):
-        dbPath = os.path.abspath("../cs5293sp20-project0/project0")
+        dbPath = os.path.abspath("../cs5293sp20-project0/project0/normanpd.db")
     elif(os.path.basename(currentDir) == "tests"):
-        dbPath = os.path.abspath("../project0")
+        dbPath = os.path.abspath("../project0/normanpd.db")
     
-    os.chdir(dbPath)
     #Then we create a normanpd database
     project0.createdb()
     
     #We re-open a connection to the sqlite3 database, and run a PRAGMA table_info() statement
-    conn = sqlite3.connect("normanpd.db")
+    conn = sqlite3.connect(dbPath)
     results = conn.execute("PRAGMA table_info(incidents);")
     output = results.fetchall()
     
@@ -39,7 +38,7 @@ def test_creatdb():
     assert output[1][1] == 'Incident Number'
     assert output[2][1] == 'Location'
     assert output[3][1] == 'Nature'
-    assert output[4][1] == 'Incident ORI'
+    assert output[4][1] == 'Incident Ori'
     
     #Finally we close the connection to the database
     conn.close()
