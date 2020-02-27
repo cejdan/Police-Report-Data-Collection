@@ -20,7 +20,7 @@ def test_creatdb():
     #First we establish a path to our normanpd.db file (created in the project0 folder)
     currentDir = os.getcwd()
     if(os.path.basename(currentDir) == "cs5293sp20-project0"):
-        dbPath = os.path.abspath("project0/normanpd.db")
+        dbPath = os.path.abspath("../cs5293sp20-project0/project0/normanpd.db")
     elif(os.path.basename(currentDir) == "tests"):
         dbPath = os.path.abspath("../project0/normanpd.db")
     
