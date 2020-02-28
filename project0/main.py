@@ -3,8 +3,7 @@ from project0 import project0 as myProject
 
 
 def main(url):
-    #myProject = proj.project0()
-    
+
     myPDF = myProject.fetchincidents(url)
     myCSV = myProject.extractincidents(myPDF)
 
@@ -23,8 +22,9 @@ def main(url):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     
-    #MUST PROVIDE THIS EXACT STRING:
-    "http://normanpd.normanok.gov/content/daily-activity"
+    #Must provide the following URL
+    #http://normanpd.normanok.gov/content/daily-activity
+	#Or, a URL of the form: http://normanpd.normanok.gov/filebrowser_download/657/\d\d\d\d-\d\d-\d\d%20Daily%20Incident%20Summary.pdf
     
     parser.add_argument("--incidents", type=str, required=True, 
                          help="The arrest summary url.")
