@@ -10,8 +10,9 @@ Date/Time | Incident Number | Location | Nature | Incident ORI
 2/24/2020 0:17 | 2020-00014233 | OAKWOOD DR / WYLIE RD | Traffic Stop | OK0140200
 
 To download and run this project, first download or clone the repository, and on a Bash shell with python3 and pipenv installed, run:
+```bash
     pipenv install
-
+```
 Once the pipenv has been initialized and all required packages have been successfully installed, you can run the scripts with:
     pipenv run python project0/main.py --incidents http://normanpd.normanok.gov/content/daily-activity
 	
