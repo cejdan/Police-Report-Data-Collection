@@ -22,7 +22,7 @@ class project0:
                 allData.append(urllib.request.urlopen(url).read())
                 return allData
             except:
-                raise NameError("Your url ended in .pdf but the file could not be read. Please try inputing a url with the form:\nhttp://normanpd.normanok.gov/content/daily-activity\nor\nhttp://normanpd.normanok.gov/filebrowser_download/657/\d\d\d\d-\d\d-\d\d%20Daily%20Incident%20Summary.pdf" )
+                raise NameError("Your url ended in .pdf but the file could not be read. Please try inputing a url with the form:\nhttp://normanpd.normanok.gov/filebrowser_download/657/2020-02-27%20Daily%20Incident%20Summary.pdf \nor\nhttp://normanpd.normanok.gov/content/daily-activity" )
 
         elif(url == "http://normanpd.normanok.gov/content/daily-activity"):
             #This opens a connection to the normanpd website.
@@ -63,7 +63,7 @@ class project0:
             # =============================================================================
             return allData
         else:
-            raise NameError("The url was invalid. Please input a url with the form: http://normanpd.normanok.gov/content/daily-activity \nor\nhttp://normanpd.normanok.gov/filebrowser_download/657/\d\d\d\d-\d\d-\d\d%20Daily%20Incident%20Summary.pdf")
+            raise NameError("The url was invalid. Please input a url with the form: http://normanpd.normanok.gov/content/daily-activity \nor\nhttp://normanpd.normanok.gov/filebrowser_download/657/2020-02-27%20Daily%20Incident%20Summary.pdf")
 
     def extractincidents(dataPDF):
         
