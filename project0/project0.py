@@ -6,7 +6,6 @@ import re
 import sqlite3
 from sqlite3 import Error
 import pandas
-import os
 
 
 class project0:
@@ -16,10 +15,14 @@ class project0:
         
         allData = []
         inputPattern = re.compile(r"http://normanpd.normanok.gov/filebrowser_download/657/\d\d\d\d-\d\d-\d\d%20Daily%20Incident%20Summary.pdf")
-
-        if(re.search(inputPattern, url)):
-            allData.append(urllib.request.urlopen(url).read())
-            return allData
+        pdfPattern = re.compile(r".pdf$")
+        
+        if(re.search(inputPattern, url) or re.search(pdfPattern, url)):
+            try:
+                allData.append(urllib.request.urlopen(url).read())
+                return allData
+            except:
+                raise NameError("Your url ended in .pdf but the file could not be read. Please try inputing a url with the form:\nhttp://normanpd.normanok.gov/content/daily-activity\nor\nhttp://normanpd.normanok.gov/filebrowser_download/657/\d\d\d\d-\d\d-\d\d%20Daily%20Incident%20Summary.pdf" )
 
         elif(url == "http://normanpd.normanok.gov/content/daily-activity"):
             #This opens a connection to the normanpd website.
@@ -60,7 +63,7 @@ class project0:
             # =============================================================================
             return allData
         else:
-            raise NameError("The url was invalid. Please input the following url: http://normanpd.normanok.gov/content/daily-activity")
+            raise NameError("The url was invalid. Please input a url with the form: http://normanpd.normanok.gov/content/daily-activity \nor\nhttp://normanpd.normanok.gov/filebrowser_download/657/\d\d\d\d-\d\d-\d\d%20Daily%20Incident%20Summary.pdf")
 
     def extractincidents(dataPDF):
         
