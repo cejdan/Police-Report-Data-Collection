@@ -63,7 +63,7 @@ class project0:
             # =============================================================================
             return allData
         else:
-            raise NameError("The url was invalid. Please input a url with the form: http://normanpd.normanok.gov/content/daily-activity \nor\nhttp://normanpd.normanok.gov/filebrowser_download/657/2020-02-27%20Daily%20Incident%20Summary.pdf")
+            raise NameError("The url was invalid. Please input a url with the form:\nhttp://normanpd.normanok.gov/content/daily-activity \nor\nhttp://normanpd.normanok.gov/filebrowser_download/657/2020-02-27%20Daily%20Incident%20Summary.pdf")
 
     def extractincidents(dataPDF):
         
